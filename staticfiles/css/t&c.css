@@ -1,0 +1,119 @@
+::-webkit-scrollbar{
+    border-radius: 5px;
+    width: 10px;
+}
+::-webkit-scrollbar-thumb{
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+body{
+    background-color: #f4f6fc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 97%;
+    margin: 0 5px;
+    font-family: sans-serif;
+}
+.logo{
+    background-color: #052c80;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #f4f6fc;
+    margin-top: 20px;
+}
+.logo img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+.container{
+    background-color: #052c80;
+    width: 90%;
+    height: 440px;
+    margin-top: -40px;
+    z-index: -2;
+    padding: 3%;
+    color: #f4f6fc;
+    padding-top: 40px;
+    border-radius: 5px;
+}
+.container h3{
+    color: rgb(48, 241, 248);
+    font-size: 18px;
+    font-family: sans-serif;
+    text-decoration: underline;
+    width: 100%;
+    text-align: center;
+}
+.p{
+    font-size: 13px;
+    margin-left: 15%;
+    width: 70%;
+    text-align: center;
+    font-family: sans-serif;
+}
+.term-container{
+    display: flex;
+    justify-content: space-between;
+    width: 94%;
+    color: black;
+    background-color: #f4f6fc;
+    height: 330px;
+    overflow-y: auto;
+    border-radius: 5px;
+    padding: 0 3% 0 3%;
+}
+.nine{
+    width: 50%;
+    height: fit-content;
+    font-family: sans-serif;
+}
+.term h4{
+    font-size: 15px;
+    margin: 0;
+    text-decoration: underline;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #052c80;
+}
+.term p{
+    font-size: 14px;
+    margin: 0;
+    margin-bottom: 5px;
+    color: #052c80;
+}
+@media screen and (max-width: 900px) {
+    .logo{
+        width: 100px;
+        height: 100px;
+    }
+    .logo img{
+        width: 100px;
+        height: 100px;
+    }
+    .container{
+        height: 600px;
+    }
+    .container h3{
+        font-size: 12px;
+    }
+    .p{
+        font-size: 12px;
+        width: 100%;
+        margin-left: 0;
+    }
+    .term-container{
+        height: 450px;
+    }
+    .term p,h4{
+        font-size: 12px;
+    }
+    .nine{
+        width: 49%;
+        overflow-x: hidden;
+    }
+}

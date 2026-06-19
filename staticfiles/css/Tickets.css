@@ -1,0 +1,330 @@
+:root{
+    --primary-color: #052c80;
+    --secondary-color: rgb(48, 241, 248);
+    --tertiary-color: #f4f6fc;
+}
+body{
+    background-color: var(--tertiary-color);
+    font-family: sans-serif;
+}
+nav{
+    background-color: var(--primary-color);
+    position: fixed;
+    width: 94%;
+    left: 1%;
+    top: 0;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1%;
+    padding-right: 1%;
+    z-index: 5;
+    border: 3px solid var(--tertiary-color);
+}
+nav .links{
+    width: 67%;
+} 
+nav .account_details{
+    width: 40%;
+    display: flex;
+    justify-content: end;
+}
+nav .links a{
+    color: var(--tertiary-color);
+    text-decoration: none;
+    padding: 5px;
+    border: 1px solid var(--tertiary-color);
+    border-radius: 5px;
+    border-top: none;
+    text-align: center;
+    font-size: 12px;
+}
+nav .links a:hover{
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+}
+nav .account_details a{
+    color: var(--secondary-color);
+    text-decoration: none;
+    padding: 5px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    border-top: none;
+    text-align: center;
+    font-size: 12px;
+}
+nav .account_details a:hover{
+    color: var(--tertiary-color);
+    border: 1px solid var(--tertiary-color);
+}
+.fa-solid{
+    color: var(--tertiary-color);
+}
+.screen{
+    width: 60%;
+    margin-top: 150px;
+    font-size: 12px;
+    margin-left: 15%;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    padding: 10px 20px;
+    display: none;
+}
+.container_4{
+    background-color: var(--primary-color);
+    width: 96%;
+    padding: 2%;
+    height: fit-content;
+    margin-top: 60px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container_4 h3{
+    color: var(--secondary-color);
+    font-size: 12px;
+    text-decoration: underline;
+    margin: 5px;
+}
+
+.acc_detay{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.acc_details{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.acc_details label{
+    font-size: 12px;
+    color: var(--tertiary-color);
+}
+.acc_details input{
+    width: 80%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    height: 20px;
+    text-align: center;
+    background-color: var(--tertiary-color);
+}
+.acc_details input::placeholder{
+    color: var(--primary-color);
+    font-size: 12px;
+    font-weight: bold;
+}
+.Active input{
+    background-color: var(--secondary-color);
+}
+
+.container_4 form{
+    border: 1px solid var(--tertiary-color);
+    width: 96%;
+    padding: 1%;
+    border-radius: 5px;
+    margin-top: 3px;
+    margin-top: 15px;
+}
+.container_4 form h4{
+    font-size: 12px;
+    color: var(--tertiary-color);
+    font-weight: bold;
+    margin: 10px;
+    text-decoration: underline;
+}
+.create_acc{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.create_acc label, input, select {
+    font-size: 12px;
+    border: none;
+    outline: none; 
+    border-radius: 5px;       
+}
+.create_acc textarea, select {
+    margin-bottom: 10px;
+    width: 55%;
+    height: 25px;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+.create_acc textarea{
+    margin-bottom: 10px;
+    width: 65%;
+    height: 65px;
+    color: var(--primary-color); 
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    outline: none; 
+    border-radius: 5px;
+}
+.create_acc textarea::placeholder{
+    color: var(--primary-color);
+    font-size: 12px;
+    font-family: sans-serif;
+}
+.create_acc label{
+    color: var(--tertiary-color);
+}
+.acc_buttons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.acc_buttons button{
+    width: 25%;
+    height: 25px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    background-color: var(--secondary-color);
+    font-weight: bold;
+}
+.acc_buttons button:nth-child(2){
+    background-color: var(--primary-color);
+    border: 1px solid var(--secondary-color);
+    color: var(--tertiary-color);
+}
+#about_emf{
+    border: 1px dotted var(--tertiary-color);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px 10px;
+}
+.about_ef{
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+    margin: 0;
+    border-radius: 5px;
+    width: 98%;
+    padding: 1%;
+    font-size: 12px;
+    display: none;
+}
+.container_5{
+    background-color: var(--primary-color);
+    width: 96%;
+    padding: 2%;
+    min-height: 350px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ticketz{
+    width: 96%;
+    padding: 2%;
+    background-color: var(--primary-color);
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+}
+.ticketz h4{
+    margin: 0;
+    background-color: var(--tertiary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--primary-color);
+    padding: 5px 5px;
+}
+.ticketz h4 span{
+    font-size: 8px;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+.ticketm{
+    background-color: var(--tertiary-color);
+    margin: 0;
+    margin-top: -1px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--primary-color);
+    padding: 5px 5px;
+    min-height: 20px;
+}
+.ticketm span{
+    font-weight: 800;
+    text-decoration: underline;
+}
+.ticketr{
+    background-color: var(--secondary-color);
+    margin: 0;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--primary-color);
+    padding: 5px 5px;
+    min-height: 20px;
+}
+.ticketr span{
+    font-weight: 800;
+    text-decoration: underline;
+}
+footer{
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    width: 95%;
+    padding: 2%;
+    font-size: 12px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 3px solid var(--primary-color);
+    border-top: none;
+    text-align: center;
+}
+.alte{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: var(--tertiary-color);
+    border-radius: 5px;
+}
+.alte p{
+    color: var(--primary-color);
+    font-size: 12px;
+}
+footer p span{
+    font-weight: bold;
+}
+@media screen and (min-width: 500px) {
+   .screen{
+        display: block;
+   } 
+   .container_4{
+         display: none;
+   }
+   .container_5{
+         display: none;
+   }
+   footer{
+         display: none;
+   }
+}

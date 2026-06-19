@@ -1,0 +1,462 @@
+:root{
+    --primary-color: #052c80;
+    --secondary-color: rgb(48, 241, 248);
+    --tertiary-color: #f4f6fc;
+}
+body{
+    background-color: var(--tertiary-color);
+    font-family: sans-serif;
+}
+nav{
+    background-color: var(--primary-color);
+    position: fixed;
+    width: 94%;
+    left: 1%;
+    top: 0;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1%;
+    padding-right: 1%;
+    z-index: 5;
+    border: 3px solid var(--tertiary-color);
+}
+nav .links{
+    width: 60%;
+}
+nav .account_details{
+    width: 40%;
+    display: flex;
+    justify-content: end;
+}
+nav .links a{
+    color: var(--tertiary-color);
+    text-decoration: none;
+    padding: 5px;
+    border: 1px solid var(--tertiary-color);
+    border-radius: 5px;
+    border-top: none;
+    text-align: center;
+    font-size: 12px;
+}
+nav .links a:hover{
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+}
+nav .account_details a{
+    color: var(--secondary-color);
+    text-decoration: none;
+    padding: 5px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    border-top: none;
+    text-align: center;
+    font-size: 12px;
+}
+nav .account_details a:hover{
+    color: var(--tertiary-color);
+    border: 1px solid var(--tertiary-color);
+}
+.fa-solid{
+    color: var(--tertiary-color);
+}
+.screen{
+    width: 60%;
+    margin-top: 150px;
+    font-size: 12px;
+    margin-left: 15%;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    padding: 10px 20px;
+    display: none;
+}
+.container_1{
+    background-color: var(--tertiary-color);
+    width: 98%;
+    padding: 0 1% 0 1%;
+    height: 150px;
+    margin-top: 60px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.image_dash{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: 2px solid var(--secondary-color);
+    border-top: none;
+    border-left: none;
+    margin: 0;
+    z-index: 2;
+}
+.image_dash img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.detail_dash{
+    height: fit-content;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color);
+    border-top: 3px solid var(--primary-color);
+    margin-top: -10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: var(--tertiary-color);
+    z-index: 1;
+}
+.micro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.micro p{
+    margin: 0;
+    font-size: 10px;
+    color: var(--primary-color);
+}
+.micro h4{
+    margin: 0;
+    margin-top: 5px;
+    font-size: 12px;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-top: none;
+    border-radius: 5px;
+    padding: 5px 20px;
+    background-color: var(--secondary-color);
+}
+.macro{
+    border-radius: 5px;
+    padding: 1px 15px;
+}
+.container_2{
+    background-color: var(--primary-color);
+    width: 98%;
+    padding: 0 1% 0 1%;
+    height: 100px;
+    margin-top: 0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container_2 h3{
+    color: var(--secondary-color);
+    font-size: 12px;
+    text-decoration: underline;
+    margin: 5px;
+}
+table{
+    width: 100%;
+}
+th, td {
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    color: var(--tertiary-color);
+    font-size: 12px;
+    text-align: center;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    margin: 0;
+}
+th{
+    font-weight: bold;
+    background-color: var(--tertiary-color);
+}
+td p{
+    background-color: var(--secondary-color);
+    width: 70%;
+    border-radius: 5px;
+    margin-left: 10%;
+    padding: 5px 5px;
+    color: var(--primary-color);
+}
+.container_3{
+    background-color: var(--primary-color);
+    width: 98%;
+    padding: 0 1% 0 1%;
+    height: 240px;
+    margin-top: 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container_3 h3{
+    color: var(--secondary-color);
+    font-size: 12px;
+    text-decoration: underline;
+    margin: 5px;
+}
+.container_3 form{
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--tertiary-color);
+    border-radius: 5px;
+}
+.container_3 form input, select {
+    border: none;
+    background-color: var(--tertiary-color);
+    outline: none;
+    width: 60%;
+    height: 25px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: var(--primary-color);
+}
+.container_3 form label{
+    color: var(--tertiary-color);
+    font-size: 12px;
+    color: var(--tertiary-color);
+}
+.amount_c, .account_c {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 5px 10px;
+}
+.dates{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5px 0;
+}
+.container_3 form button{
+    background-color: var(--secondary-color);
+    margin: 8px 0;
+    width: 35%;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+.results{
+    width: 99%;
+    height: 40px;
+    background-color: var(--tertiary-color);
+    border-radius: 5px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.results label{
+    color: var(--primary-color);
+    font-size: 12px;
+}
+.results input{
+    width: 20%;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    outline: none;
+    box-shadow: 2px 2px 3px gray;
+    padding: 3px;
+}
+.results input::placeholder{
+    color: var(--secondary-color);
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+.container_4{
+    background-color: var(--tertiary-color);
+    width: 96%;
+    padding: 2%;
+    height: fit-content;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container_4 h3{
+    color: var(--primary-color);
+    font-size: 12px;
+    text-decoration: underline;
+    margin: 5px;
+}
+.acc_detay{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.acc_details{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.acc_details label{
+    font-size: 12px;
+    color: var(--primary-color);
+}
+.acc_details input{
+    width: 80%;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    height: 20px;
+    text-align: center;
+    background-color: var(--secondary-color);
+}
+.acc_details input::placeholder{
+    color: var(--primary-color);
+    font-size: 12px;
+    font-weight: bold;
+}
+.Active input{
+    background-color: var(--primary-color);
+}
+.Active input::placeholder{
+    color: var(--secondary-color);
+}
+.container_4 form{
+    border: 1px solid var(--primary-color);
+    width: 96%;
+    padding: 1%;
+    border-radius: 5px;
+    margin-top: 3px;
+    margin-top: 15px;
+}
+.container_4 form h4{
+    font-size: 12px;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin: 10px;
+    text-decoration: underline;
+}
+.create_acc{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.create_acc label, input, select {
+    font-size: 12px;
+    border: none;
+    outline: none; 
+    border-radius: 5px;       
+}
+.create_acc input, select {
+    margin-bottom: 10px;
+    width: 55%;
+    height: 25px;
+    color: var(--tertiary-color);
+    background-color: var(--primary-color);
+}
+.create_acc input::placeholder{
+    color: var(--tertiary-color);
+    font-size: 12px;
+}
+.create_acc label{
+    color: var(--primary-color);
+}
+.acc_buttons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.acc_buttons button{
+    width: 25%;
+    height: 25px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    background-color: var(--secondary-color);
+    font-weight: bold;
+}
+.acc_buttons button:nth-child(2){
+    background-color: var(--primary-color);
+    border: 1px solid var(--secondary-color);
+    color: var(--tertiary-color);
+}
+#about_emf{
+    border: 1px dotted var(--tertiary-color);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px 10px;
+}
+.about_ef{
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+    margin: 0;
+    border-radius: 5px;
+    width: 98%;
+    padding: 1%;
+    font-size: 12px;
+    display: none;
+}
+footer{
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    width: 95%;
+    padding: 2%;
+    font-size: 12px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 3px solid var(--primary-color);
+    border-top: none;
+    text-align: center;
+}
+footer p span{
+    font-weight: bold;
+}
+@media screen and (min-width: 500px) {
+   .screen{
+        display: block;
+   } 
+   .container_1{
+        display: none;
+   }
+   .container_2{
+        display: none;
+   }
+   .container_3{
+        display: none;
+   }
+   .container_4{
+         display: none;
+   }
+   footer{
+         display: none;
+   }
+}

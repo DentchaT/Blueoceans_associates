@@ -33,10 +33,9 @@ SECRET_KEY = 'django-insecure-)_(lg3!8w$(4@@$-g&60i@t3$@ti5*s!i0ox&hb_o1_fn0l2gd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['blueoceansassociates-production.up.railway.app', 'https://blueoceansassociates-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://blueoceansassociates-production.up.railway.app']
 
-ALLOWED_HOSTS = ['https://ctndrd.com','ctndrd.com','web-production-5e1e7.up.railway.app','https://web-production-5e1e7.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['https://ctndrd.com','https://web-production-5e1e7.up.railway.app']
 
 
 # Application definition
@@ -49,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'BOA_app',
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -59,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'BOA_project.urls'
@@ -91,9 +92,9 @@ DATABASES = {
     }
 }
 
-DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))#os.getenv('DATABASE_URL'))#
-}
+#DATABASES = {
+#    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))#os.getenv('DATABASE_URL'))#
+#}
 
 # Media
 MEDIA_URL = '/media/'
@@ -133,8 +134,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
-
-BASE_DIR =Path(__file__).resolve().parent.parent
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
