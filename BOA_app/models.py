@@ -1,10 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from cloudinary.models import CloudinaryField
+
 class Profile(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
-    profile_pic=models.ImageField(upload_to='img/profile/',blank=True, null=True)
-    national_id=models.ImageField(upload_to='img/profile/',blank=True, null=True)
+    profile_pic=CloudinaryField('images/profile_pic/', blank=True, null=True )
+    national_id=CloudinaryField('images/profile_id/', blank=True, null=True )
     first_name=models.CharField(max_length=50, blank=True, null=True)
     last_name=models.CharField(max_length=50, blank=True, null=True)
     dob= models.DateField(null=True, blank=True)
