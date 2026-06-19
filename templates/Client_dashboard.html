@@ -1,0 +1,174 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOA CLIENT DASHBOARD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="{% static 'images/BOA LOGO.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/client_dashboard.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="links">
+            <a href="client-dashboard">Dashboard</a>
+            <a href="client-tickets">Tickets</a>
+            <a style="color: var(--secondary-color);" href="clientlogout">Logout</a>
+        </div>
+        <div class="account_details">
+            {% if profile.first_name != None %}
+                <a href="client-profile"><span class="name">{{profile.first_name}}</span> &nbsp; <i class="fa-solid fa-gear"></i></a>
+            {% else %}
+                <a href="client-profile"><span class="name" style="color: red;">Create profile</span> &nbsp; <i class="fa-solid fa-gear"></i></a>
+            {% endif %}
+        </div>
+    </nav>
+    <p class="screen">Screen size not supported currently!</p>
+    <div class="container_1">
+        <div class="image_dash">
+            <img src="{% static 'images/BOA_LOGO-removebg.png' %}" alt="">
+        </div>
+        <div class="detail_dash">
+            <div class="micro">
+                <p>Secure</p>
+                <h4>True</h4>
+            </div>
+            <div class="micro">
+                <p>Access</p>
+                <h4>100%</h4>
+            </div>
+            <div class="micro">
+                <p>Running</p>
+                <h4>Yes</h4>
+            </div>
+            <div class="micro macro">
+                <p>Yesterday</p>
+                <h4>+30%</h4>
+            </div>
+        </div>
+    </div>
+    <!--<div class="container_2">
+        <h3>WEEKLY PERFORMANCE</h3>
+        <table>
+            <tr>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THUR</th>
+                <th>FRI</th>
+            </tr>
+            <tr>
+                <td>2%</td>
+                <td>1%</td>
+                <td>4%</td>
+                <td><p>Pending..</p></td>
+                <td><p>Pending..</p></td>
+            </tr>
+        </table>
+    </div>-->
+    <div class="container_4">
+        <h3>EMMERGENCY FUND ACCOUNT</h3>
+        {% if account %}
+            <div class="acc_detay">
+                <div class="acc_details">
+                    <label for="acc_d">Account type</label>
+                    <input type="text" id="acc_d" disabled placeholder="{{account.account_type}}">
+                </div>
+                <div class="acc_details">
+                    <label for="acc_dl">Credit Balance</label>
+                    <input type="text" id="acc_dl" disabled placeholder="{{account.balance}}">
+                </div>
+                {% if account.status == False%}
+                    <div class="acc_details Active">
+                        <label for="acc_dlm">Account status</label>
+                        <input type="text" id="acc_dlm" disabled placeholder="Pending...">
+                    </div>
+                {% else %}
+                    <div class="acc_details Active">
+                        <label for="acc_dlm">Account status</label>
+                        <input type="text" id="acc_dlm" disabled placeholder="Active">
+                    </div>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="acc_detay">
+                <div class="acc_details">
+                    <label for="acc_d">Account type</label>
+                    <input type="text" id="acc_d" disabled placeholder="------">
+                </div>
+                <div class="acc_details">
+                    <label for="acc_dl">Credit Balance</label>
+                    <input type="text" id="acc_dl" disabled placeholder="------">
+                </div>
+                <div class="acc_details Active">
+                    <label for="acc_dlm">Account status</label>
+                    <input type="text" id="acc_dlm" disabled placeholder="------">
+                </div>
+            </div>
+        {% endif %}
+        <form method="post" class="em_fund_form">
+            {% csrf_token %}
+            <h4>CREATE ACCOUNT</h4>
+            <div class="create_acc">
+                <label for="crt">Account type:</label>
+                <select name="type" id="crt">
+                    <option value="Pay account">Pay account</option>
+                    <option value="Fixed account">Fixed account</option>
+                </select>
+            </div>
+            <div class="create_acc">
+                <label for="crtx">Credit balance:</label>
+                <input id="crtx" required name="balance" placeholder="In dollars e.g 500" type="number">
+            </div>
+            <div class="acc_buttons">
+                <button type="submit">Create</button>
+                <button type="submit">Update</button>
+            </div>
+        </form>
+        <button id="about_emf">About Emmergency fund</button>
+        <p class="about_ef"> &nbsp; &nbsp; &nbsp; Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Numquam earum ratione id ex quisquam dolores architecto odit nam, 
+            libero corrupti reprehenderit, consequatur expedita!</p>
+    </div>
+    <div class="container_3">
+        <h3>CALCULATOR USES PAST PERFORMANCE</h3>
+        <form action="">
+            <div class="amount_c">
+                <label for="amount">Amount:</label>
+                <input id="amount" type="text">
+            </div>
+            <div class="dates">
+                <div class="stat">
+                    <label for="stat">Start date:</label>
+                    <input id="stat" type="date">
+                </div>
+                <div class="stop">
+                    <label for="end">End date:</label>
+                    <input id="end" type="date">
+                </div>
+            </div>
+            <div class="account_c">
+                <label for="acc">Account type:</label>
+                <select name="" id="acc">
+                    <option value="Pay Account">Pay Account</option>
+                    <option value="Fixed Account">Fixed Account</option>
+                </select>
+            </div>
+            <button type="submit">Calculate</button>
+        </form>
+        <div class="results">
+            <label for="perc">Percentage profit:</label>
+            <input disabled id="perc" placeholder="70%" type="text">
+            <label for="prof">Profit</label>
+            <input id="prof" placeholder="$399" disabled type="text">
+        </div>
+    </div>
+    <footer>
+        <p>At&nbsp;&nbsp;<span>BLUEOCEANS ASSOCIATES,</span>&nbsp;&nbsp;Capital protection is our primary objective above all else.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLUEOCEANS ASSOCIATES | ADMIN lOGIN</title>
+    <link rel="icon" type="image/png" href="{% static 'images/BOA LOGO.png' %}">
+    <link rel="stylesheet" href="{% static 'css/admin_login.css' %}">
+</head>
+<body>
+    <div class="logo">
+        <img src="{% static 'images/BOA_LOGO-removebg.png' %}" alt="">
+    </div>
+    <p class="notex">Display for this device's screen width is coming soon <img class="notex-img" src="{% static 'images/BOA LOGO.png' %}" alt="BOA"></p>
+    <div class="form">
+        <form id="login-form" method="post">
+            {% csrf_token %}
+            {% if message %}
+                <p style="margin: 0; color: red; margin-top: -10px; font-family: sans-serif;">{{message}}</p>
+            {% endif %}
+            <input class="input_text" required type="text" placeholder="Username" name="username">
+            <input class="input_text" required type="password" placeholder="Password" name="password">
+            <div class="check_container">
+                <input class="input_check" type="checkbox">
+                <p>Remember me</p>
+            </div>
+            <button type="submit" form="login-form" class="btn">Login</button>
+        </form>
+        <p>Don't have an account? <span><a href="signup">Signup as client</a></span></p>
+        <p class="terms"><a href="terms">Terms and Conditions</a></p>
+    </div>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"adcec922cb974f26a31c5831793ae9e6","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>

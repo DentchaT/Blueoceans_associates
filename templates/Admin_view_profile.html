@@ -1,0 +1,139 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOA ADMIN VIEW PROFILE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="{% static 'images/BOA LOGO.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/Admin_view_profile.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="links">
+            <a href="{% url 'admindashboard' %}">Admin Dashboard</a>
+            <a href="{% url 'admintickets' %}">Tickets</a>
+            <a style="color: var(--secondary-color);" href="{% url 'adminlogout' %}">Logout</a>
+        </div>
+        <div class="account_details">
+            <a href=""><span class="name">ADMIN</span> &nbsp; <i class="fa-solid fa-gear"></i></a>
+        </div>
+    </nav>
+    <p class="screen">Screen size not supported currently!</p>
+    <div class="container_1">
+        <div class="image_dash">
+            <img src="{% static 'images/BOA_LOGO-removebg.png' %}" alt="">
+        </div>
+        <div class="detc">
+            <div class="newclients">
+                <div class="mnn">
+                    <div class="profile_pic">
+                        {% if profile.profile_pic %}
+                            <img src="{{profile.profile_pic.url}}" alt="">
+                        {% else %}
+                            <img src="{% static 'images/profilepic.png' %}" alt="">
+                        {% endif %}
+                        <div class="bio_details">
+                            <div class="bio">
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" disabled placeholder="{{profile.first_name}} {{profile.last_name}}">
+                            </div>
+                            <div class="bio">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" disabled placeholder="{{profile.user.email}}">
+                            </div>
+                            <div class="bio">
+                                <label for="dob">DOB:</label>
+                                <input type="text" id="dob" disabled placeholder="{{profile.dob}}">
+                            </div>
+                            <div class="bio">
+                                <label for="country">Country:</label>
+                                <input type="text" id="country" disabled placeholder="{{profile.country}}">
+                            </div>
+                            <div class="bio">
+                                <label for="phone">Phone:</label>
+                                <input type="number" id="phone" disabled placeholder="{{profile.phone}}">
+                            </div>
+                            <div class="bio">
+                                <label for="income">Income source:</label>
+                                <input type="text" id="income" disabled placeholder="{{profile.income_source}}">
+                            </div>
+                            <div class="bio">
+                                <label for="title">Job title:</label>
+                                <input type="text" id="title" disabled placeholder="{{profile.job_title}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="actions">
+                    {% if profile.verified == True %}
+                        <button type="submit">Account is verified <i class="fa fa-check" aria-hidden="true"></i></button>
+                    {% else %}
+                        <button type="submit"><a href="{% url 'adminapproveprofile' profile.pk %}">Verify Account</a></button>
+                    {% endif %}
+                    <button type="submit"><a href="{% url 'admindissprofile' profile.pk %}">Reject account</a><i class="fa fa-times" aria-hidden="true"></i></button>
+                </div>
+                <div class="accounts">
+                    <h4>ACCOUNTS:</h4>
+                    <div class="tabl">
+                        <table>
+                            <tr>
+                                <th>No.</th>
+                                <th>Acc. Created</th>
+                                <th>Time since</th>
+                                <th>Acc. Balance</th>
+                                <th>Acc. type</th>
+                                <th>Action</th>
+                            </tr>
+                            {% if accounts %}
+                                {% for account in accounts %}
+                                    <tr>
+                                        <td>{{account.id}}</td>
+                                        <td>{{account.created_at}}</td>
+                                        <td>{{account.created_at|timesince}} ago</td>
+                                        <td>$ {{account.balance}}</td>
+                                        <td>{{account.account_type}}</td>
+                                        {% if account.status == True %}
+                                            <td><Button class="appr"><a href="{% url 'adminrejectfundaccount' account.pk %}">Approved/Reject</a></Button></td>
+                                        {% else %}
+                                            <td><Button class="rege"><a href="{% url 'adminapprovefundaccount' account.pk %}">Approve</a></Button></td>
+                                        {% endif %}
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td>...</td>
+                                    <td>...........</td>
+                                    <td>...........</td>
+                                    <td>...........</td>
+                                    <td>...........</td>
+                                    <td><Button class="rege">........</Button></td>
+                                </tr>
+                            {% endif %}
+                        </table>
+                    </div>
+                </div>
+                <div class="accounts_2">
+                    <button type="submit"><a href="{% url 'adminviewprofiletickets' profile.pk %}">View {{profile.first_name}}'s [ {{ticket_no}} ] Tickets</a></button>
+                </div>
+            </div>
+            <div class="newclients">
+                <div class="national_id">
+                    {% if profile.national_id %}
+                        <img src="{{profile.national_id.url}}" alt="">
+                    {% else %}
+                        <img src="{% static 'images/profilepic.png' %}" alt="">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>At&nbsp;&nbsp;<span>BLUEOCEANS ASSOCIATES,</span>&nbsp;&nbsp;Capital protection is our primary objective above all else.</p>
+    </footer>
+</body>
+</html>

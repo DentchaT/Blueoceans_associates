@@ -1,0 +1,135 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOA ADMIN DASHBOARD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="{% static 'images/BOA LOGO.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/admin_dashboard.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="links">
+            <a href="{% url 'admindashboard' %}">Admin Dashboard</a>
+            <a href="{% url 'admintickets' %}">Tickets</a>
+            <a style="color: var(--secondary-color);" href="{% url 'adminlogout' %}">Logout</a>
+        </div>
+        <div class="account_details">
+            <a href=""><span class="name">ADMIN</span> &nbsp; <i class="fa-solid fa-gear"></i></a>
+        </div>
+    </nav>
+    <p class="screen">Screen size not supported currently!</p>
+    <div class="container_1">
+        <div class="image_dash">
+            <img src="{% static 'images/BOA_LOGO-removebg.png' %}" alt="">
+        </div>
+        <div class="detc">
+            <div class="newclients">
+                <h4>NEWLY CREATED ACCOUNTS</h4>
+                <form method="get" class="search_user">
+                    <label for="sear">First name:</label>
+                    {% if query %}
+                        <input name="q" type="text" id="sear" placeholder="{{query}}">
+                    {% else %}
+                        <input name="q" type="text" id="sear">
+                    {% endif %}
+                    <button type="submit">Search</button>
+                </form>
+                <div class="tablex">
+                    <table>
+                        <tr>
+                            <th>No:</th>
+                            <th>Joined</th>
+                            <th>Name</th>
+                            <th>P</th>
+                            <th>Verify</th>
+                            <th>Delete</th>
+                        </tr>
+                        {% if profiles %}
+                            {% for profile in profiles %}
+                                <tr>
+                                    <td>{{profile.id}}</td>
+                                    <td>{{profile.created_at}}</td>
+                                    <td>{{profile.first_name}} {{profile.last_name}}</td>
+                                    <td><button class="vp"><a href="{% url 'adminviewprofile' profile.pk %}">View Profile</a></button></td>
+                                    <td><button><a href="{% url 'adminverifypofile' profile.pk %}">Verify</a></button></td> 
+                                    <td><button class="sec"><a href="{% url 'admindeleteaccount' profile.pk %}">Delete</a></button></td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td>...................</td>
+                                <td>...................</td>
+                                <td>...................</td>
+                                <td><button class="vp"><a href="">.......</a></button></td>
+                                <td><button><a href="">.......</a></button></td>
+                                <td><button class="sec"><a href="">.......</a></button></td>
+                            </tr>
+                        {% endif %}
+                    </table>
+                </div>
+            </div>
+            <div class="newclients">
+                <h4>VERIFIED ACCOUNTS</h4>
+                <form method="get" class="search_user">
+                    <label for="sear">First name:</label>
+                    {% if querry %}
+                        <input name="a" type="text" id="sear" placeholder="{{querry}}">
+                    {% else %}
+                        <input name="a" type="text" id="sear">
+                    {% endif %}
+                    <button type="submit">Search</button>
+                </form>
+                <div class="tablex">
+                    <table>
+                        <tr>
+                            <th>No:</th>
+                            <th>Joined</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Location</th>
+                            <th>Profile</th>
+                            <th>Reject</th>
+                            <th>Delete</th>
+                        </tr>
+                        {% if actives %}
+                            {% for active in actives %}
+                                <tr>
+                                    <td>{{active.id}}</td>
+                                    <td>{{active.created_at}}</td>
+                                    <td>{{active.first_name}} {{active.last_name}}</td>
+                                    <td>{{active.user.email}}</td>
+                                    <td>{{active.country}}</td>
+                                    <td><button class="vp"><a href="{% url 'adminviewprofile' active.pk %}">View Profile</a></button></td>
+                                    <td><button class="sec"><a href="{% url 'adminrejectprofile' active.pk %}">Reject</a></button></td>
+                                    <td><button class="sec"><a href="{% url 'admindeleteaccount' active.pk %}">Delete</a></button></td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td>...............</td>
+                                <td>...............</td>
+                                <td>...............</td>
+                                <td>...............</td>
+                                <td>...............</td>
+                                <td>...............</td>
+                                <td><button class="vp"><a href="">..............</a></button></td>
+                                <td><button class="sec"><a href="">..............</a></button></td>
+                                <td><button class="sec"><a href="">..............</a></button></td>
+                            </tr>
+                        {% endif %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>At&nbsp;&nbsp;<span>BLUEOCEANS ASSOCIATES,</span>&nbsp;&nbsp;Capital protection is our primary objective above all else.</p>
+    </footer>
+</body>
+</html>

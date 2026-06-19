@@ -1,0 +1,30 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.client_login, name='client_login'),
+    path('login', views.client_login, name='login'),
+    path('admin login', views.admin_login, name='admin_login'),
+    path('signup', views.signup, name='signup'), 
+    path('terms', views.terms, name='terms'),
+    path('client-dashboard', views.clientdashboard, name='clientdashboard'), 
+    path('admin-dashboard', views.admindashboard, name='admindashboard'),
+    path('admin-tickets', views.admintickets, name='admintickets'),
+    path('admin-view-profile/<int:pk>', views.adminviewprofile, name='adminviewprofile'),
+    path('admin-verify-profile/<int:pk>', views.adminverifyprofile, name='adminverifypofile'), 
+    path('admin-approve-profile/<int:pk>', views.adminapproveprofile, name='adminapproveprofile'), 
+    path('admin-delete-account/<int:pk>',views.admindeleteaccount, name='admindeleteaccount'),
+    path('adminrejectprofile/<int:pk>', views.adminrejectprofile, name='adminrejectprofile'),
+    path('admindissprofile/<int:pk>', views.admindissprofile, name='admindissprofile'),
+    path('adminapprovefundaccount/<int:pk>', views.adminapprovefundaccount, name='adminapprovefundaccount'), 
+    path('adminrejectfundaccount/<int:pk>', views.adminrejectfundaccount, name='adminrejectfundaccount'), 
+    path('adminviewprofiletickets/<int:pk>',views.adminviewprofiletickets, name='adminviewprofiletickets'),
+    path('admin-approve-prof/<int:pk>', views.adminapproveprof, name='adminapproveprof'), 
+    path('admindissprof/<int:pk>', views.admindissprof, name='admindissprof'),
+    path('adminapprovefund/<int:pk>', views.adminapprovefund, name='adminapprovefund'), 
+    path('adminrejectfund/<int:pk>', views.adminrejectfund, name='adminrejectfund'), 
+    path('adminlogout', views.adminlogout, name='adminlogout'),
+    path('clientlogout', views.clientlogout, name='clientlogout'),
+    path('client-profile', views.clientprofile, name='clientprofile'),
+    path('client-tickets', views.clienttickets, name='clienttickets'), 
+]

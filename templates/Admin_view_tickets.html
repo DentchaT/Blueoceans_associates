@@ -1,0 +1,207 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOA ADMIN DASHBOARD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="{% static 'images/BOA LOGO.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/Admin_view_tickets.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="links">
+            <a href="{% url 'admindashboard' %}">Admin Dashboard</a>
+            <a href="{% url 'admintickets' %}">Tickets</a>
+            <a style="color: var(--secondary-color);" href="{% url 'adminlogout' %}">Logout</a>
+        </div>
+        <div class="account_details">
+            <a href=""><span class="name">ADMIN</span> &nbsp; <i class="fa-solid fa-gear"></i></a>
+        </div>
+    </nav>
+    <p class="screen">Screen size not supported currently!</p>
+    <div class="container_1">
+        <div class="image_dash">
+            <img src="{% static 'images/BOA_LOGO-removebg.png' %}" alt="">
+        </div>
+        <div class="main-container">
+            <div class="ticket-sidebar-left">
+                <div class="ticket-sidebar-left-heading">
+                    <h4>OPEN TICKETS</h4>
+                </div>
+                <div class="tick"> 
+                    {% if tickets %} 
+                        {% for ticket in tickets %} 
+                            <a href="#" class="ticket-highlights" 
+                            data-ticketid="{{ ticket.id }}"
+                            data-firstname="{{ ticket.profile.first_name }}" 
+                            data-lastname="{{ ticket.profile.last_name }}" 
+                            data-type="{{ ticket.type }}" 
+                            data-created="{{ ticket.created_at }}" 
+                            data-message="{{ ticket.message }}" 
+                            data-profilepic="{% if ticket.profile.profile_pic %}{{ ticket.profile.profile_pic.url }}{% else %}{% static 'images/profilepic.png' %}{% endif %}"> 
+                                <div class="ticket-responses-data" style="display:none;"> 
+                                    {% for response in ticket.responses %} 
+                                        <div class="response-item"> 
+                                            {{ response.response }} 
+                                        </div> 
+                                    {% empty %} 
+                                        <div class="response-item"> ... </div> 
+                                    {% endfor %} 
+                                </div>
+                                {% if ticket.profile.profile_pic %} 
+                                    <img src="{{ ticket.profile.profile_pic.url }}" alt=""> 
+                                {% else %} 
+                                    <img src="{% static 'images/profilepic.png' %}" alt=""> 
+                                {% endif %} 
+                                <div class="ticket-request-info"> 
+                                    <h5>{{ ticket.type }} Ticket by {{ ticket.profile.first_name }}</h5> 
+                                    <p>Ticket created {{ ticket.created_at }}</p> 
+                                </div> 
+                            </a> 
+                        {% endfor %} 
+                    {% else %} 
+                        <a href="#" class="ticket-highlights"> 
+                            <div class="ticket-request-info"> 
+                                <p>No available tickets</p> 
+                            </div> 
+                        </a> 
+                    {% endif %} 
+                </div>
+            </div>
+            <div class="ticket-sidebar-right">
+                <div class="message-container"  id="messageContainer" style="display:none;">
+                    <h4 style="margin-left: 30%;" class="message-container-h4" id="ticketHeading"></h4> 
+                    <div class="message-container-owners"> 
+                        <div class="persons"> 
+                            <img id="userProfilePic" src="{% static 'images/profilepic.png' %}" alt=""> 
+                            <h5 id="userName"></h5> 
+                        </div> 
+                        <h4>AND</h4> 
+                        <div class="persons"> 
+                            <h5>ADMIN</h5> 
+                            <img src="{% static 'images/BOA LOGO.png' %}" alt=""> 
+                        </div> 
+                    </div> 
+                    <div class="ticket-messages"> 
+                        <div class="ticket-messages-donor"> 
+                            <img id="messageProfilePic" src="{% static 'images/profilepic.png' %}" alt=""> 
+                            <p id="ticketInfo"></p> 
+                        </div> 
+                        <div class="ticket-messages-recipient" id="responsesContainer">
+                            <p>Choose a ticket to view details</p>
+                            <img src="{% static 'images/BOA LOGO.png' %}" alt="">
+                        </div>
+                        
+                    </div> 
+                    <form method="post" class="ticket-message-create"> 
+                        {% csrf_token %}
+                        <input type="hidden" name="ticket" id="ticketIdInput">
+                        <label for="ticket-message">Enter message:</label> 
+                        <textarea name="ticket-message" id="ticket-message"></textarea> 
+                        <button type="submit">Submit</button> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>At&nbsp;&nbsp;<span>BLUEOCEANS ASSOCIATES,</span>&nbsp;&nbsp;Capital protection is our primary objective above all else.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        
+            const ticketHighlights = document.querySelectorAll(".ticket-highlights");
+        
+            const ticketIdInput = document.getElementById("ticketIdInput");
+            const messageContainer = document.getElementById("messageContainer");
+            const userName = document.getElementById("userName");
+            const userProfilePic = document.getElementById("userProfilePic");
+            const messageProfilePic = document.getElementById("messageProfilePic");
+            const ticketHeading = document.getElementById("ticketHeading");
+            const ticketInfo = document.getElementById("ticketInfo");
+            const responsesContainer = document.getElementById("responsesContainer");
+        
+            ticketHighlights.forEach(ticket => {
+        
+                ticket.addEventListener("click", function(e) {
+        
+                    e.preventDefault();
+        
+                    if (this.classList.contains("active-ticket")) {
+        
+                        this.classList.remove("active-ticket");
+                        messageContainer.style.display = "none";
+        
+                        return;
+                    }
+        
+                    ticketHighlights.forEach(item => {
+                        item.classList.remove("active-ticket");
+                    });
+        
+                    this.classList.add("active-ticket");
+        
+                    const ticketId = this.dataset.ticketid;
+
+                    ticketIdInput.value = ticketId;
+
+                    const firstName = this.dataset.firstname;
+                    const lastName = this.dataset.lastname;
+                    const ticketType = this.dataset.type;
+                    const createdAt = this.dataset.created;
+                    const ticketMessage = this.dataset.message;
+                    const profilePic = this.dataset.profilepic;
+        
+                    messageContainer.style.display = "block";
+        
+                    userName.textContent = `${firstName} ${lastName}`;
+        
+                    userProfilePic.src = profilePic;
+                    messageProfilePic.src = profilePic;
+        
+                    ticketHeading.textContent =
+                        `${ticketType.toUpperCase()} TICKET - ${createdAt}`;
+        
+                    ticketInfo.textContent = ticketMessage;
+        
+                    // Load responses
+                    const responses =
+                        this.querySelector(".ticket-responses-data");
+        
+                    responsesContainer.innerHTML = "";
+        
+                    if (responses) {
+        
+                        responses.querySelectorAll(".response-item")
+                            .forEach(response => {
+        
+                                responsesContainer.innerHTML += `
+                                    <div style="display:flex;
+                                                align-items:center;
+                                                gap:10px;
+                                                margin-bottom:10px;">
+                                        <p>${response.textContent}</p>
+                                        <img src="/static/images/BOA LOGO.png"
+                                             alt=""
+                                             style="width:40px;height:40px;">
+                                    </div>
+                                `;
+        
+                            });
+        
+                    }
+        
+                });
+        
+            });
+        
+        });
+    </script>
+</body>
+</html>

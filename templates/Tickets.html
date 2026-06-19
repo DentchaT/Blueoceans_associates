@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOA TICKETS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/Tickets.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/BOA LOGO.png' %}" type="image/x-icon">
+</head>
+<body>
+    <nav>
+        <div class="links">
+            <a href="client-dashboard">Dashboard</a>
+            <a href="client-tickets">Tickets</a>
+            <a style="color: var(--secondary-color);" href="clientlogout">Logout</a>
+        </div>
+        <div class="account_details">
+            {% if profile.first_name != None %}
+                <a href="client-profile"><span class="name">{{profile.first_name}}</span> &nbsp; <i class="fa-solid fa-gear"></i></a>
+            {% else %}
+                <a href="client-profile"><span class="name" style="color: red;">Create profile</span> &nbsp; <i class="fa-solid fa-gear"></i></a>
+            {% endif %}
+        </div>
+    </nav>
+    <p class="screen">Screen size not supported currently!</p>
+    <div class="container_4">
+        <h3>TICKETS AND RESPONSES</h3>
+        <div class="acc_detay">
+            <div class="acc_details">
+                <label for="acc_d">.....</label>
+                <input type="text" id="acc_d" disabled placeholder="Be Brief">
+            </div>
+            <div class="acc_details">
+                <label for="acc_dl">.....</label>
+                <input type="text" id="acc_dl" disabled placeholder="Articulate">
+            </div>
+            <div class="acc_details Active">
+                <label for="acc_dlm">.....</label>
+                <input type="text" id="acc_dlm" disabled placeholder="On point">
+            </div>
+        </div>
+        <form method="post" class="em_fund_form">
+            {% csrf_token %}
+            <h4>CREATE TICKET</h4>
+            <div class="create_acc">
+                <label for="crt">Choose reason:</label>
+                <select name="reason" id="crt">
+                    <option value="Adjustment">Adjustment</option>
+                    <option value="Deposit">Deposit</option>
+                    <option value="Inquiry">Inquiry</option>
+                    <option value="Withdraw">Withdraw</option>
+                    <option value="Complaint">Complaint</option>
+                    <option value="Feedback">Feedback</option>
+                </select>
+            </div>
+            <div class="create_acc">
+                <label for="crtx">Statement:</label>
+                <textarea name="statement" placeholder="Message..." id="crtx"></textarea>
+            </div>
+            <div class="acc_buttons">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+        <button id="about_emf">About Tickets</button>
+        <p class="about_ef"> &nbsp; &nbsp; &nbsp; Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Numquam earum ratione id ex quisquam dolores architecto odit nam, 
+            libero corrupti reprehenderit, consequatur expedita!</p>
+    </div>
+    <div class="container_5">
+        {% if tickets %}
+            {% for ticket in tickets %}
+                <div class="ticketz">
+                    <h4>{{ticket.type}} TICKET &nbsp;&nbsp;<span>Created on; {{ticket.created_at}}</span></h4>
+                    <p class="ticketm"><span>Me:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{{ticket.message}}</p>
+                    {% if ticket.responses %}
+                        {% for respo in ticket.responses %}
+                            <p class="ticketr"><span>Admin:&nbsp;&nbsp;</span>{{respo.response}}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="alte">
+                <p>Your tickets will appear here</p>
+            </div>
+        {% endif %}
+    </div>
+    <footer>
+        <p>At&nbsp;&nbsp;<span>BLUEOCEANS ASSOCIATES,</span>&nbsp;&nbsp;Capital protection is our primary objective above all else.</p>
+    </footer>
+</body>
+</html>
