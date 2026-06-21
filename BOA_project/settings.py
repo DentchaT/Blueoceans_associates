@@ -33,8 +33,8 @@ SECRET_KEY = 'django-insecure-)_(lg3!8w$(4@@$-g&60i@t3$@ti5*s!i0ox&hb_o1_fn0l2gd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'blueoceansassociates-production.up.railway.app', 'https://blueoceansassociates-production.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['https://blueoceansassociates-production.up.railway.app']
+ALLOWED_HOSTS = ['127.0.0.1','https://blueoceansassociates.com']#, 'blueoceansassociates-production.up.railway.app', 'https://blueoceansassociates-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://blueoceansassociates.com']#,'https://blueoceansassociates-production.up.railway.app']
 
 
 
