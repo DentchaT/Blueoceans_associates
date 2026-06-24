@@ -68,7 +68,7 @@
             </div>
         </form>
         <button id="about_emf">About Tickets</button>
-        <p class="about_ef"> &nbsp; &nbsp; &nbsp; Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+        <p class="about_ef" id="emf"> &nbsp; &nbsp; &nbsp; Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
             Numquam earum ratione id ex quisquam dolores architecto odit nam, 
             libero corrupti reprehenderit, consequatur expedita!</p>
     </div>
@@ -95,4 +95,16 @@
         <p>At&nbsp;&nbsp;<span>BLUEOCEANS ASSOCIATES,</span>&nbsp;&nbsp;Capital protection is our primary objective above all else.</p>
     </footer>
 </body>
+<script>
+    const toggleButton = document.getElementById("about_emf");
+    const paragraph = document.getElementById("emf");
+
+    toggleButton.addEventListener("click", () => {
+    if (window.getComputedStyle(paragraph).display === "none") {
+        paragraph.style.display = "block";
+    } else {
+        paragraph.style.display = "none";
+    }
+    });
+</script>
 </html>
