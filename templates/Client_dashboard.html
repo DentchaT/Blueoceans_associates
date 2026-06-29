@@ -175,17 +175,6 @@
     <footer>
         <p>At&nbsp;&nbsp;<span>BLUEOCEANS ASSOCIATES,</span>&nbsp;&nbsp;Capital protection is our primary objective above all else.</p>
     </footer>
+    <script src="{% static 'js/client-dashboard.js' %}"></script>
 </body>
-<script>
-    const toggleButton = document.getElementById("about_emf");
-    const paragraph = document.getElementById("emf");
-
-    toggleButton.addEventListener("click", () => {
-    if (window.getComputedStyle(paragraph).display === "none") {
-        paragraph.style.display = "block";
-    } else {
-        paragraph.style.display = "none";
-    }
-    });
-</script>
 </html>
